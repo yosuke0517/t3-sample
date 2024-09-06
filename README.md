@@ -32,9 +32,17 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 ### Migrate 
 prisma migrate and type generation
 
+```bash
 // マイグレーションファイルの作成
 $ npx prisma migrate dev
+```
 
-// 
+```bash
+// Prisma Client の生成
 $ npx prisma generate
+```
+
+```bash
+// Prisma Studio の起動
 $ npx prisma studio
+```
