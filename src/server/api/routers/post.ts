@@ -21,6 +21,7 @@ export const postRouter = createTRPCRouter({
       return ctx.db.post.create({
         data: {
           name: input.name,
+          status: "DRAFT", // 一旦 DRAFT で作成
           createdBy: { connect: { id: ctx.session.user.id } },
         },
       });
