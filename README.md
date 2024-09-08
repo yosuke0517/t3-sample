@@ -46,3 +46,15 @@ $ npx prisma generate
 // Prisma Studio の起動
 $ npx prisma studio
 ```
+
+### DB 接続
+
+```bash
+// dbのコンテナに入ってることを前提
+psql -d t3-sample -U t3-user
+```
+
+```bash
+// テーブル構造取得（""で囲わないとエラーになった）
+\d "Post"
+```
