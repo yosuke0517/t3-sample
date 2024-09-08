@@ -2,7 +2,8 @@ import { getServerAuthSession } from "~/server/auth";
 import { HydrateClient } from "~/trpc/server";
 import { AuthWrap } from "~/app/_components/AuthWrap";
 import { LayoutHeader } from "~/app/_components/LayoutHeader";
-import TodoList from "~/app/_components/TodoList";
+import PostList from "~/app/_components/PostList";
+import { PostFromContainer } from "~/app/_components/PostFromContainer";
 
 export default async function Home() {
   const session = await getServerAuthSession();
@@ -14,7 +15,8 @@ export default async function Home() {
           <div>
             <p>server component user: {session.user.name}</p>
             <LayoutHeader />
-            <TodoList />
+            <PostList />
+            <PostFromContainer />
           </div>
         ) : (
           <AuthWrap />

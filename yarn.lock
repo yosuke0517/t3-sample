@@ -100,6 +100,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "@hookform/resolvers@npm:3.9.0"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: 10c0/0e0e55f63abbd212cf14abbd39afad1f9b6105d6b25ce827fc651b624ed2be467ebe9b186026e0f032062db59ce2370b14e9583b436ae2d057738bdd6f04356c
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -3874,6 +3883,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.53.0":
+  version: 7.53.0
+  resolution: "react-hook-form@npm:7.53.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10c0/6d62b150618a833c17d59e669b707661499e2bb516a8d340ca37699f99eb448bbba7b5b78324938c8948014e21efaa32e3510c2ba246fd5e97a96fca0cfa7c98
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -4433,6 +4451,7 @@ __metadata:
   resolution: "t3-sample@workspace:."
   dependencies:
     "@auth/prisma-adapter": "npm:^1.6.0"
+    "@hookform/resolvers": "npm:^3.9.0"
     "@prisma/client": "npm:^5.14.0"
     "@t3-oss/env-nextjs": "npm:^0.10.1"
     "@tanstack/react-query": "npm:^5.50.0"
@@ -4456,6 +4475,7 @@ __metadata:
     prisma: "npm:^5.14.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
+    react-hook-form: "npm:^7.53.0"
     server-only: "npm:^0.0.1"
     superjson: "npm:^2.2.1"
     tailwindcss: "npm:^3.4.3"
