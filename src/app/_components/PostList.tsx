@@ -1,23 +1,23 @@
+import { fetchPosts } from "~/app/_hooks/useQueryPost";
 import Link from "next/link";
-import { getPosts } from "~/app/_hooks/useQueryPost";
 
 const PostList = async () => {
-  const posts = await getPosts();
+  const result = await fetchPosts(); // 非同期関数を await する
 
-  if (!posts) {
+  if (!result.posts || result.posts.length === 0) {
     return <p>Failed to load posts</p>;
   }
 
   return (
     <div>
-      <h1>Post List</h1>
+      <h2 className="text-2xl font-bold">Post 一覧</h2>
       <ul>
-        {posts.map((post) => (
-          <li key={post.id}>
-            <Link href={`/post${post.id}`}>
-              <p>Title: {post.name}</p>
+        {result.posts.map((post) => (
+          <li key={post.id} className="flex">
+            <Link href={`/post/${post.id}`} className="w-60 text-blue-700">
+              <p>{post.name}</p>
             </Link>
-            <p>Completed: {post.status ? "Yes" : "No"}</p>
+            <p>ステータス: {post.status}</p>
           </li>
         ))}
       </ul>
