@@ -463,6 +463,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-devtools@npm:5.55.1":
+  version: 5.55.1
+  resolution: "@tanstack/query-devtools@npm:5.55.1"
+  checksum: 10c0/ff37d9b372d8f5a6cc37d68fcb7bf23e4dfe15ff4fbd79f967d261063eac51b2bf582cf8b1bd320edba45f1656a24abe7f2b88d1d9095f1f9775c481f0476bcd
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-devtools@npm:^5.55.4":
+  version: 5.55.4
+  resolution: "@tanstack/react-query-devtools@npm:5.55.4"
+  dependencies:
+    "@tanstack/query-devtools": "npm:5.55.1"
+  peerDependencies:
+    "@tanstack/react-query": ^5.55.4
+    react: ^18 || ^19
+  checksum: 10c0/948d6ccd42470ec9745514d7cf28a9c698065e3fcb89733eaeba6be53126e7832b953ebcba61c8c1e34629011f8d4c4000b01a66f79c8e3509fa06546136e43a
+  languageName: node
+  linkType: hard
+
 "@tanstack/react-query@npm:^5.50.0":
   version: 5.55.0
   resolution: "@tanstack/react-query@npm:5.55.0"
@@ -4455,6 +4474,7 @@ __metadata:
     "@prisma/client": "npm:^5.14.0"
     "@t3-oss/env-nextjs": "npm:^0.10.1"
     "@tanstack/react-query": "npm:^5.50.0"
+    "@tanstack/react-query-devtools": "npm:^5.55.4"
     "@trpc/client": "npm:^11.0.0-rc.446"
     "@trpc/react-query": "npm:^11.0.0-rc.446"
     "@trpc/server": "npm:^11.0.0-rc.446"

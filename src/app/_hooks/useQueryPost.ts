@@ -1,9 +1,19 @@
-import { type Post } from "@prisma/client";
+import {
+  type FetchQueryOptions,
+  type QueryFunction,
+  type QueryKey,
+} from "@tanstack/react-query";
+import { usePrefetchQuery } from "~/app/_hooks/common/usePrefetchQuery";
 
-export const fetchPosts = async (): Promise<{ posts: Post[] }> => {
-  // ここでfetch APIを使ってタグを付与
-  const response = await fetch("http://localhost:3000/api/posts", {
-    next: { tags: ["posts"] }, // "posts"タグを使ってキャッシュ制御
-  });
-  return response.json();
+export const UsePostsQuery = async <QueryFnData>(
+  queryKey: QueryKey,
+  queryFn: QueryFunction<QueryFnData, QueryKey>,
+  options?: Omit<
+    FetchQueryOptions<QueryFnData, unknown, QueryFnData, QueryKey>,
+    "queryKey" | "queryFn"
+  >,
+) => {
+  // usePrefetchQueryを使ってクエリをプリフェッチ
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return await usePrefetchQuery(queryKey, queryFn, options);
 };

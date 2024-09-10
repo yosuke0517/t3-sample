@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createPostSchema, type CreatePostInput } from "~/schema/post";
 import { type Post } from "@prisma/client";
-import { revalidateTag } from "next/cache";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { getPostsOption } from "~/app/_hooks/config";
 
 type PostFormProps = {
   // createPostはserver actionのため props で受け取る
@@ -15,15 +16,19 @@ const PostForm: React.FC<PostFormProps> = ({ createPost }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<CreatePostInput>({
     resolver: zodResolver(createPostSchema),
   });
 
+  const { refetch, isFetching } = useSuspenseQuery(getPostsOption);
+
   const onSubmit = async (data: CreatePostInput) => {
     try {
-      await createPost(data);
-      revalidateTag("posts");
+      const createdPost = await createPost(data);
+      if (createdPost) reset();
+      await refetch();
     } catch (error) {
       console.error("Failed to create post:", error);
     }
@@ -42,6 +47,7 @@ const PostForm: React.FC<PostFormProps> = ({ createPost }) => {
         />
         {errors.name && <p>{errors.name.message}</p>}
         <button
+          disabled={isFetching}
           className="rounded bg-green-600 px-4 py-2 text-white"
           type="submit"
         >

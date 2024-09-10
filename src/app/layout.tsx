@@ -6,6 +6,7 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "~/trpc/react";
 import { getServerAuthSession } from "~/server/auth";
 import { NextAuthProvider } from "~/app/_components/NextAuthProvider";
+import { LayoutHeader } from "~/app/_components/LayoutHeader";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -23,7 +24,10 @@ export default async function RootLayout({
         {/*client component でも server component でも session が使えるようにする
          * ベストプラクティスがあるかもしれないが、とりあえずこのようにしている*/}
         <NextAuthProvider session={session}>
-          <TRPCReactProvider>{children}</TRPCReactProvider>
+          <TRPCReactProvider>
+            <LayoutHeader />
+            {children}
+          </TRPCReactProvider>
         </NextAuthProvider>
       </body>
     </html>
