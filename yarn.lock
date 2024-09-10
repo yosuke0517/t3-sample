@@ -100,6 +100,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "@hookform/resolvers@npm:3.9.0"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: 10c0/0e0e55f63abbd212cf14abbd39afad1f9b6105d6b25ce827fc651b624ed2be467ebe9b186026e0f032062db59ce2370b14e9583b436ae2d057738bdd6f04356c
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -451,6 +460,25 @@ __metadata:
   version: 5.54.1
   resolution: "@tanstack/query-core@npm:5.54.1"
   checksum: 10c0/df064281e4fece7ea95544fba44b70d9ca547d1aa30beb0f2e7d08ab76978928e7b40bb30f05bd535b6b6090b6e67e56f16762dc0f121e181ff0b690c6121491
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-devtools@npm:5.55.1":
+  version: 5.55.1
+  resolution: "@tanstack/query-devtools@npm:5.55.1"
+  checksum: 10c0/ff37d9b372d8f5a6cc37d68fcb7bf23e4dfe15ff4fbd79f967d261063eac51b2bf582cf8b1bd320edba45f1656a24abe7f2b88d1d9095f1f9775c481f0476bcd
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-devtools@npm:^5.55.4":
+  version: 5.55.4
+  resolution: "@tanstack/react-query-devtools@npm:5.55.4"
+  dependencies:
+    "@tanstack/query-devtools": "npm:5.55.1"
+  peerDependencies:
+    "@tanstack/react-query": ^5.55.4
+    react: ^18 || ^19
+  checksum: 10c0/948d6ccd42470ec9745514d7cf28a9c698065e3fcb89733eaeba6be53126e7832b953ebcba61c8c1e34629011f8d4c4000b01a66f79c8e3509fa06546136e43a
   languageName: node
   linkType: hard
 
@@ -3874,6 +3902,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.53.0":
+  version: 7.53.0
+  resolution: "react-hook-form@npm:7.53.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10c0/6d62b150618a833c17d59e669b707661499e2bb516a8d340ca37699f99eb448bbba7b5b78324938c8948014e21efaa32e3510c2ba246fd5e97a96fca0cfa7c98
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -4433,9 +4470,11 @@ __metadata:
   resolution: "t3-sample@workspace:."
   dependencies:
     "@auth/prisma-adapter": "npm:^1.6.0"
+    "@hookform/resolvers": "npm:^3.9.0"
     "@prisma/client": "npm:^5.14.0"
     "@t3-oss/env-nextjs": "npm:^0.10.1"
     "@tanstack/react-query": "npm:^5.50.0"
+    "@tanstack/react-query-devtools": "npm:^5.55.4"
     "@trpc/client": "npm:^11.0.0-rc.446"
     "@trpc/react-query": "npm:^11.0.0-rc.446"
     "@trpc/server": "npm:^11.0.0-rc.446"
@@ -4456,6 +4495,7 @@ __metadata:
     prisma: "npm:^5.14.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
+    react-hook-form: "npm:^7.53.0"
     server-only: "npm:^0.0.1"
     superjson: "npm:^2.2.1"
     tailwindcss: "npm:^3.4.3"

@@ -5,8 +5,15 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
+import {
+  createPostSchema,
+  deletePostSchema,
+  getSinglePostSchema,
+  updatePostSchema,
+} from "~/schema/post";
 
 export const postRouter = createTRPCRouter({
+  // publicProcedure は認証なしでアクセス可能
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
@@ -15,8 +22,9 @@ export const postRouter = createTRPCRouter({
       };
     }),
 
+  // protectedProcedure は認証済みのユーザーのみアクセス可能
   create: protectedProcedure
-    .input(z.object({ name: z.string().min(1) }))
+    .input(createPostSchema)
     .mutation(async ({ ctx, input }) => {
       return ctx.db.post.create({
         data: {
@@ -24,6 +32,21 @@ export const postRouter = createTRPCRouter({
           status: "DRAFT", // 一旦 DRAFT で作成
           createdBy: { connect: { id: ctx.session.user.id } },
         },
+      });
+    }),
+
+  getPosts: publicProcedure.query(async ({ ctx }) => {
+    return ctx.db.post.findMany({
+      where: { createdBy: { id: ctx.session?.user.id } },
+      orderBy: { createdAt: "desc" },
+    });
+  }),
+
+  getPostById: protectedProcedure
+    .input(getSinglePostSchema)
+    .query(async ({ input, ctx }) => {
+      return ctx.db.post.findUnique({
+        where: { id: input.id, createdBy: { id: ctx.session.user.id } },
       });
     }),
 
@@ -35,6 +58,23 @@ export const postRouter = createTRPCRouter({
 
     return post ?? null;
   }),
+
+  updatePost: protectedProcedure
+    .input(updatePostSchema)
+    .mutation(async ({ input, ctx }) => {
+      return ctx.db.post.update({
+        where: { id: input.id },
+        data: { name: input.name },
+      });
+    }),
+
+  deletePost: protectedProcedure
+    .input(deletePostSchema)
+    .mutation(async ({ input, ctx }) => {
+      return ctx.db.post.delete({
+        where: { id: input.id },
+      });
+    }),
 
   getSecretMessage: protectedProcedure.query(() => {
     return "you can now see this secret message!";

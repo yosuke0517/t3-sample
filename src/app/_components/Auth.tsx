@@ -3,8 +3,12 @@ import { signIn } from "next-auth/react";
 export const Auth = () => {
   return (
     <div>
-      <h1>Sign in</h1>
-      <button onClick={() => signIn("github")}>github auth</button>
+      <button
+        className="rounded bg-amber-600 px-4 py-2 text-white"
+        onClick={() => signIn("github")}
+      >
+        github auth
+      </button>
     </div>
   );
 };

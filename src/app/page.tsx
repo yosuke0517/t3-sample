@@ -1,25 +1,25 @@
 import { getServerAuthSession } from "~/server/auth";
-import { HydrateClient } from "~/trpc/server";
 import { AuthWrap } from "~/app/_components/AuthWrap";
 import { LayoutHeader } from "~/app/_components/LayoutHeader";
-import TodoList from "~/app/_components/TodoList";
+import { PostContainer } from "~/app/_components/PostContainer";
+import { UsePostsQuery } from "~/app/_hooks/useQueryPost";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { fetchPosts } from "~/app/_hooks/infra/fetchPosts";
+import { POST_QUERY_KEYS } from "~/app/_hooks/config";
 
 export default async function Home() {
   const session = await getServerAuthSession();
+  const queryClient = await UsePostsQuery(
+    POST_QUERY_KEYS.FETCH_POSTS,
+    fetchPosts,
+  );
 
+  // NOTE: HydrationBoundaryでラップしていることで、子のclient componentでもデータが参照可能
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        {session ? (
-          <div>
-            <p>server component user: {session.user.name}</p>
-            <LayoutHeader />
-            <TodoList />
-          </div>
-        ) : (
-          <AuthWrap />
-        )}
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <main className="flex min-h-screen flex-col items-center">
+        {session ? <PostContainer /> : <AuthWrap />}
       </main>
-    </HydrateClient>
+    </HydrationBoundary>
   );
 }
