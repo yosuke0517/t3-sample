@@ -14,7 +14,10 @@ export const createPostMutation = async (
   const validatedInput = createPostSchema.parse(input);
 
   // tRPC APIを呼び出す
-  return await api.post.create({ name: validatedInput.name });
+  return await api.post.create({
+    name: validatedInput.name,
+    status: validatedInput.status,
+  });
 };
 
 export const updatePostMutation = async (
@@ -27,6 +30,7 @@ export const updatePostMutation = async (
   return await api.post.updatePost({
     id: validatedInput.id,
     name: validatedInput.name,
+    status: validatedInput.status,
   });
 };
 

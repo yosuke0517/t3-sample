@@ -17,7 +17,7 @@ export default async function Home() {
   // NOTE: HydrationBoundaryでラップしていることで、子のclient componentでもデータが参照可能
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <main className="flex min-h-screen flex-col items-center">
+      <main className="min-h-screen">
         {session ? <PostContainer /> : <AuthWrap />}
       </main>
     </HydrationBoundary>
