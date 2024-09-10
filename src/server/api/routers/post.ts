@@ -1,5 +1,3 @@
-import { z } from "zod";
-
 import {
   createTRPCRouter,
   protectedProcedure,
@@ -13,15 +11,6 @@ import {
 } from "~/schema/post";
 
 export const postRouter = createTRPCRouter({
-  // publicProcedure は認証なしでアクセス可能
-  hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input.text}`,
-      };
-    }),
-
   // protectedProcedure は認証済みのユーザーのみアクセス可能
   create: protectedProcedure
     .input(createPostSchema)
@@ -29,12 +18,13 @@ export const postRouter = createTRPCRouter({
       return ctx.db.post.create({
         data: {
           name: input.name,
-          status: "DRAFT", // 一旦 DRAFT で作成
+          status: input.status,
           createdBy: { connect: { id: ctx.session.user.id } },
         },
       });
     }),
 
+  // publicProcedure は認証なしでアクセス可能
   getPosts: publicProcedure.query(async ({ ctx }) => {
     return ctx.db.post.findMany({
       where: { createdBy: { id: ctx.session?.user.id } },

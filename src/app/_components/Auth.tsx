@@ -1,14 +1,19 @@
 import { signIn } from "next-auth/react";
+import { Box, Button } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 export const Auth = () => {
   return (
-    <div>
-      <button
-        className="rounded bg-amber-600 px-4 py-2 text-white"
+    <Box className="h-full">
+      <Button
+        variant="contained"
+        color="inherit"
         onClick={() => signIn("github")}
+        className="flex gap-2"
       >
+        <GitHubIcon />
         github auth
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 };
