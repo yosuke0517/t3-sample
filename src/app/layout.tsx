@@ -26,7 +26,7 @@ export default async function RootLayout({
         <NextAuthProvider session={session}>
           <TRPCReactProvider>
             <LayoutHeader />
-            {children}
+            <main className="min-h-screen">{children}</main>
           </TRPCReactProvider>
         </NextAuthProvider>
       </body>
