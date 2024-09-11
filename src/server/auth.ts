@@ -45,6 +45,13 @@ export const authOptions: NextAuthOptions = {
         id: user.id,
       },
     }),
+    redirect: async ({ url, baseUrl }) => {
+      // 認証が成功した際に /post にリダイレクト
+      if (url === "/") {
+        return `${baseUrl}/post`;
+      }
+      return baseUrl;
+    },
   },
   adapter: PrismaAdapter(db) as Adapter,
   providers: [
