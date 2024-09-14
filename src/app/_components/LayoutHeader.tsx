@@ -6,7 +6,7 @@ export const LayoutHeader = () => {
   const { data: session } = useSession();
   return (
     <div className="flex w-full justify-between bg-blue-700 px-3 py-1 text-white">
-      <p>Hello!! {session?.user?.name}</p>
+      {/*<p>Hello!! {session?.user?.name}</p>*/}
       {session && <SignOutButton />}
     </div>
   );

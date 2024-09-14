@@ -25,7 +25,8 @@ export const usePrefetchQuery = async <QueryFnData>(
     await queryClient.prefetchQuery({
       queryKey,
       queryFn,
-      staleTime: 30 * 1000, // NOTE: キャッシュの有効期限 デフォルトは0
+      // 最新がフェッチできない問題のお試し
+      // staleTime: 30 * 1000, // NOTE: キャッシュの有効期限 デフォルトは0
       retry: false, // NOTE: エラー時のリトライ回数 デフォルトは3回
       ...options, // オプションを展開して追加
     });

@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createPostSchema, type CreatePostInput } from "~/schema/post";
 import { type Post } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { getPostsOption } from "~/app/_hooks/config";
+import { getPostsOption, POST_QUERY_KEYS } from "~/app/_hooks/config";
 import {
   TextField,
   Button,
@@ -17,6 +17,7 @@ import {
   FormControl,
   Grid2,
 } from "@mui/material";
+import { getQueryClient } from "~/trpc/query-client";
 
 type PostFormProps = {
   // createPostはserver actionのため props で受け取る
@@ -43,7 +44,14 @@ const PostForm: React.FC<PostFormProps> = ({ createPost }) => {
     try {
       const createdPost = await createPost(data);
       if (createdPost) reset({ name: "", status: "" });
-      await refetch();
+      // revalidateTag("posts"); // コレやると以降の処理が走らない
+      const queryClient = getQueryClient();
+      await queryClient.invalidateQueries({
+        queryKey: POST_QUERY_KEYS.FETCH_POSTS,
+      });
+      // このコンポーネントが表示中にinvalidateQueriesを呼び出すと、勝手に再fetchされるらしい
+      // なので、ここでrefetchを呼び出す必要はない
+      // await refetch();
     } catch (error) {
       console.error("Failed to create post:", error);
     }
