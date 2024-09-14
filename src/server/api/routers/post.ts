@@ -12,14 +12,14 @@ import {
 
 export const postRouter = createTRPCRouter({
   // protectedProcedure は認証済みのユーザーのみアクセス可能
-  create: protectedProcedure
+  create: publicProcedure
     .input(createPostSchema)
     .mutation(async ({ ctx, input }) => {
       return ctx.db.post.create({
         data: {
           name: input.name,
           status: input.status,
-          createdBy: { connect: { id: ctx.session.user.id } },
+          // createdBy: { connect: { id: ctx.session.user.id } },
         },
       });
     }),
@@ -27,7 +27,7 @@ export const postRouter = createTRPCRouter({
   // publicProcedure は認証なしでアクセス可能
   getPosts: publicProcedure.query(async ({ ctx }) => {
     return ctx.db.post.findMany({
-      where: { createdBy: { id: ctx.session?.user.id } },
+      // where: { createdBy: { id: ctx.session?.user.id } },
       orderBy: { createdAt: "desc" },
     });
   }),
@@ -36,14 +36,17 @@ export const postRouter = createTRPCRouter({
     .input(getSinglePostSchema)
     .query(async ({ input, ctx }) => {
       return ctx.db.post.findUnique({
-        where: { id: input.id, createdBy: { id: ctx.session.user.id } },
+        where: {
+          id: input.id,
+          // createdBy: { id: ctx.session.user.id } },
+        },
       });
     }),
 
   getLatest: protectedProcedure.query(async ({ ctx }) => {
     const post = await ctx.db.post.findFirst({
       orderBy: { createdAt: "desc" },
-      where: { createdBy: { id: ctx.session.user.id } },
+      // where: { createdBy: { id: ctx.session.user.id } },
     });
 
     return post ?? null;
