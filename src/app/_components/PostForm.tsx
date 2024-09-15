@@ -44,7 +44,6 @@ const PostForm: React.FC<PostFormProps> = ({ createPost }) => {
     try {
       const createdPost = await createPost(data);
       if (createdPost) reset({ name: "", status: "" });
-      // revalidateTag("posts"); // コレやると以降の処理が走らない
       const queryClient = getQueryClient();
       await queryClient.invalidateQueries({
         queryKey: POST_QUERY_KEYS.FETCH_POSTS,

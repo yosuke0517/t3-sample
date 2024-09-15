@@ -32,7 +32,7 @@ export const postRouter = createTRPCRouter({
     });
   }),
 
-  getPostById: protectedProcedure
+  getPostById: publicProcedure
     .input(getSinglePostSchema)
     .query(async ({ input, ctx }) => {
       return ctx.db.post.findUnique({
