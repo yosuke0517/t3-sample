@@ -6,10 +6,9 @@ import React, { Suspense } from "react";
 export const PostContainer = () => {
   return (
     <div className="mx-auto my-0 w-full p-4">
-      <Suspense fallback={<p>Loading...</p>}>
-        <PostList />
-        <PostForm createPost={CreatePostAction} />
-      </Suspense>
+      <PostList />
+      <PostForm createPost={CreatePostAction} />
+      {/*</Suspense>*/}
     </div>
   );
 };

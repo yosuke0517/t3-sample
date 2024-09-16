@@ -1,19 +1,17 @@
-import { PostContainer } from "~/app/_components/PostContainer";
-import { UsePostsQuery } from "~/app/_hooks/useQueryPost";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { fetchPosts } from "~/app/_hooks/infra/fetchPosts";
-import { POST_QUERY_KEYS } from "~/app/_hooks/config";
+import PostList from "~/app/_components/PostList";
+import PostForm from "~/app/_components/PostForm";
+import { CreatePostAction } from "~/app/actions/CreatePostAction";
+import React, { Suspense } from "react";
+import { Typography } from "@mui/material";
 
 export default async function PostPage() {
-  const queryClient = await UsePostsQuery(
-    POST_QUERY_KEYS.FETCH_POSTS,
-    fetchPosts,
-  );
-
-  // NOTE: HydrationBoundaryでラップしていることで、子のclient componentでもデータが参照可能
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <PostContainer />
-    </HydrationBoundary>
+    <div className="mx-auto my-0 w-full p-4">
+      <Typography variant="h3">Post 一覧</Typography>
+      <Suspense fallback={<p>Loading...</p>}>
+        <PostList />
+      </Suspense>
+      <PostForm createPost={CreatePostAction} />
+    </div>
   );
 }

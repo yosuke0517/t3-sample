@@ -4,8 +4,6 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createPostSchema, type CreatePostInput } from "~/schema/post";
 import { type Post } from "@prisma/client";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { getPostsOption, POST_QUERY_KEYS } from "~/app/_hooks/config";
 import {
   TextField,
   Button,
@@ -17,7 +15,8 @@ import {
   FormControl,
   Grid2,
 } from "@mui/material";
-import { getQueryClient } from "~/trpc/query-client";
+import { revalidateTag } from "next/cache";
+import { fetchPosts } from "~/app/_hooks/infra/fetchPosts"; // サーバサイドキャッシュの無効化に利用
 
 type PostFormProps = {
   // createPostはserver actionのため props で受け取る
@@ -38,19 +37,14 @@ const PostForm: React.FC<PostFormProps> = ({ createPost }) => {
     },
   });
 
-  const { refetch, isFetching } = useSuspenseQuery(getPostsOption);
-
   const onSubmit = async (data: CreatePostInput) => {
     try {
       const createdPost = await createPost(data);
-      if (createdPost) reset({ name: "", status: "" });
-      const queryClient = getQueryClient();
-      await queryClient.invalidateQueries({
-        queryKey: POST_QUERY_KEYS.FETCH_POSTS,
-      });
-      // このコンポーネントが表示中にinvalidateQueriesを呼び出すと、勝手に再fetchされるらしい
-      // なので、ここでrefetchを呼び出す必要はない
-      // await refetch();
+      if (createdPost) {
+        reset({ name: "", status: "" });
+        // Post一覧の再取得を手動で実行
+        await fetchPosts();
+      }
     } catch (error) {
       console.error("Failed to create post:", error);
     }
@@ -108,9 +102,9 @@ const PostForm: React.FC<PostFormProps> = ({ createPost }) => {
             type="submit"
             variant="contained"
             color="success"
-            disabled={isFetching}
+            disabled={false} // 状態を手動で管理するため、ここは簡略化
           >
-            {isFetching ? "Loading..." : "Create Post"}
+            Create Post
           </Button>
         </Grid2>
       </Grid2>
