@@ -4,11 +4,12 @@ import { fetchPostById } from "~/app/_hooks/infra/fetchPosts";
 import { POST_QUERY_KEYS } from "~/app/_hooks/config";
 import PostDetailContainer from "~/app/_components/PostDetail";
 
-export default async function PostDetail({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function PostDetail(
+  props: {
+    params: Promise<{ id: string }>;
+  }
+) {
+  const params = await props.params;
   const { id } = params;
   const queryClient = await UsePostsQuery(
     POST_QUERY_KEYS.FETCH_POST_BY_ID,

@@ -1,10 +1,8 @@
 import { api } from "~/trpc/server";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } },
-) {
+export async function GET(request: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   // Number型に変換したIDを取得
   const postId = Number(params.id);
   console.log("postId", postId);
