@@ -22,7 +22,7 @@
     "@mui/icons-material": "^6.0.2",
     "@mui/material": "^6.0.2",
     "@prisma/client": "^5.14.0",
-    "@t3-oss/env-nextjs": "^0.10.1",
+    "@t3-oss/env-nextjs": "^0.11.0",
     "@tanstack/react-query": "^5.50.0",
     "@tanstack/react-query-devtools": "^5.55.4",
     "@trpc/client": "^11.0.0-rc.446",
