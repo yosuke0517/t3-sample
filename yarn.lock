@@ -1095,31 +1095,35 @@ __metadata:
   linkType: hard
 
 "@trpc/client@npm:^11.0.0-rc.446":
-  version: 11.0.0-rc.498
-  resolution: "@trpc/client@npm:11.0.0-rc.498"
+  version: 11.0.0-rc.666
+  resolution: "@trpc/client@npm:11.0.0-rc.666"
   peerDependencies:
-    "@trpc/server": 11.0.0-rc.498+5714423cc
-  checksum: 10c0/ba28f2487211b7455890f31ca8b0eb6bda9eb2e10be5da3d2a89e0dffb235e4fb7178bd1f852821fe8172c982a7e0dd3055acf579d80092631f2b124f2420286
+    "@trpc/server": 11.0.0-rc.666+99556c074
+    typescript: ">=5.6.2"
+  checksum: 10c0/13073f3a21afa68892242d17e1e5fd47379270101a8014814cfcbe74c54f38ee495df042ae8be84171348e61341507e129b457f2f6f24338f4687fd137c99a34
   languageName: node
   linkType: hard
 
 "@trpc/react-query@npm:^11.0.0-rc.446":
-  version: 11.0.0-rc.498
-  resolution: "@trpc/react-query@npm:11.0.0-rc.498"
+  version: 11.0.0-rc.666
+  resolution: "@trpc/react-query@npm:11.0.0-rc.666"
   peerDependencies:
-    "@tanstack/react-query": ^5.49.2
-    "@trpc/client": 11.0.0-rc.498+5714423cc
-    "@trpc/server": 11.0.0-rc.498+5714423cc
+    "@tanstack/react-query": ^5.62.8
+    "@trpc/client": 11.0.0-rc.666+99556c074
+    "@trpc/server": 11.0.0-rc.666+99556c074
     react: ">=18.2.0"
     react-dom: ">=18.2.0"
-  checksum: 10c0/bbe8e428a005f31ce3fa23589e079a7a45f33dc5309507035c447db20f3935b4486dc68798628cee1cf464fc4a3c224438185dd55d2f525e312dcd6a1568f7fe
+    typescript: ">=5.6.2"
+  checksum: 10c0/e1846927d98df8d34d1e4de3469315fa6d01478343c207ec8be8a984c795517227517ebc3a7e8f1652b8b6ef08afee995f89f8117de1439ad2b12b1f03309009
   languageName: node
   linkType: hard
 
 "@trpc/server@npm:^11.0.0-rc.446":
-  version: 11.0.0-rc.498
-  resolution: "@trpc/server@npm:11.0.0-rc.498"
-  checksum: 10c0/307ffbb4f70d7aeb1ba16a85d100b9b679f77fcee333b811defe339d820be0ea6085c18fbbf9feae259851ad99c0bc16f88f05723e33b1adf4fb679f923bd585
+  version: 11.0.0-rc.666
+  resolution: "@trpc/server@npm:11.0.0-rc.666"
+  peerDependencies:
+    typescript: ">=5.6.2"
+  checksum: 10c0/9c9584415a795040ae8b696ac66e96b80f3632ce514071448312c1fa40447ac874ed6aba75471cefbd3b25e0b9b3c749af589a4ff3edb2ed7b0154ee26010542
   languageName: node
   linkType: hard
 
