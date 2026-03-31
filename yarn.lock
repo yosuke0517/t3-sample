@@ -1029,31 +1029,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@t3-oss/env-core@npm:0.10.1":
-  version: 0.10.1
-  resolution: "@t3-oss/env-core@npm:0.10.1"
+"@t3-oss/env-core@npm:0.13.11":
+  version: 0.13.11
+  resolution: "@t3-oss/env-core@npm:0.13.11"
   peerDependencies:
+    arktype: ^2.1.0
     typescript: ">=5.0.0"
-    zod: ^3.0.0
+    valibot: ^1.0.0-beta.7 || ^1.0.0
+    zod: ^3.24.0 || ^4.0.0
   peerDependenciesMeta:
+    arktype:
+      optional: true
     typescript:
       optional: true
-  checksum: 10c0/0d86d0453b41dee2f3a84227682c3cd2baf2f5167bfb06893fa9d28b59688bb775fe472c45d3e10efd35962c73e21131bb1763a8b1294d10edb5c8506fb9940a
+    valibot:
+      optional: true
+    zod:
+      optional: true
+  checksum: 10c0/acb1d5c8f184f0004612b0ed1ef965f3fd014b945b3192057f1500ba760ded8d4c988e6cfed3c63070ccde3b8f7dc27f90044d29474325c5025e44fd3c607441
   languageName: node
   linkType: hard
 
-"@t3-oss/env-nextjs@npm:^0.10.1":
-  version: 0.10.1
-  resolution: "@t3-oss/env-nextjs@npm:0.10.1"
+"@t3-oss/env-nextjs@npm:^0.13.0":
+  version: 0.13.11
+  resolution: "@t3-oss/env-nextjs@npm:0.13.11"
   dependencies:
-    "@t3-oss/env-core": "npm:0.10.1"
+    "@t3-oss/env-core": "npm:0.13.11"
   peerDependencies:
+    arktype: ^2.1.0
     typescript: ">=5.0.0"
-    zod: ^3.0.0
+    valibot: ^1.0.0-beta.7 || ^1.0.0
+    zod: ^3.24.0 || ^4.0.0
   peerDependenciesMeta:
+    arktype:
+      optional: true
     typescript:
       optional: true
-  checksum: 10c0/475f265c592121490fa29d3fb06af78013e17e9d4d989b0d6832c905db971e0d70c1f2947f127fc0c79a762c2ee3f2c9bf1fe44f71e2f16fb541ca2213910c92
+    valibot:
+      optional: true
+    zod:
+      optional: true
+  checksum: 10c0/50bb7791d6eba701fcd32fd0e73d00ea4f0cab039d2f984651d48402ea77451ec6510511dccc9a83a0849754321969864dfb626067741d0477d6940ca4b6cbb1
   languageName: node
   linkType: hard
 
@@ -5280,7 +5296,7 @@ __metadata:
     "@mui/icons-material": "npm:^6.0.2"
     "@mui/material": "npm:^6.0.2"
     "@prisma/client": "npm:^5.14.0"
-    "@t3-oss/env-nextjs": "npm:^0.10.1"
+    "@t3-oss/env-nextjs": "npm:^0.13.0"
     "@tanstack/react-query": "npm:^5.50.0"
     "@tanstack/react-query-devtools": "npm:^5.55.4"
     "@trpc/client": "npm:^11.0.0-rc.446"
