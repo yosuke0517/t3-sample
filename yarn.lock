@@ -1095,31 +1095,38 @@ __metadata:
   linkType: hard
 
 "@trpc/client@npm:^11.0.0-rc.446":
-  version: 11.0.0-rc.498
-  resolution: "@trpc/client@npm:11.0.0-rc.498"
+  version: 11.19.0
+  resolution: "@trpc/client@npm:11.19.0"
   peerDependencies:
-    "@trpc/server": 11.0.0-rc.498+5714423cc
-  checksum: 10c0/ba28f2487211b7455890f31ca8b0eb6bda9eb2e10be5da3d2a89e0dffb235e4fb7178bd1f852821fe8172c982a7e0dd3055acf579d80092631f2b124f2420286
+    "@trpc/server": 11.19.0
+    typescript: ">=5.7.2"
+  bin:
+    intent: bin/intent.js
+  checksum: 10c0/343aeb48bc71940049e2829a2b1e832c504a03e204e3f24a724d6f2248b3267a266029a38fdf0c2d1bdbf7b732e21bec75f264f06c1a278128cc5930ee5ffc08
   languageName: node
   linkType: hard
 
 "@trpc/react-query@npm:^11.0.0-rc.446":
-  version: 11.0.0-rc.498
-  resolution: "@trpc/react-query@npm:11.0.0-rc.498"
+  version: 11.19.0
+  resolution: "@trpc/react-query@npm:11.19.0"
   peerDependencies:
-    "@tanstack/react-query": ^5.49.2
-    "@trpc/client": 11.0.0-rc.498+5714423cc
-    "@trpc/server": 11.0.0-rc.498+5714423cc
+    "@tanstack/react-query": ^5.80.3
+    "@trpc/client": 11.19.0
+    "@trpc/server": 11.19.0
     react: ">=18.2.0"
-    react-dom: ">=18.2.0"
-  checksum: 10c0/bbe8e428a005f31ce3fa23589e079a7a45f33dc5309507035c447db20f3935b4486dc68798628cee1cf464fc4a3c224438185dd55d2f525e312dcd6a1568f7fe
+    typescript: ">=5.7.2"
+  checksum: 10c0/9a68061c81d5680a52019bcea0eca792242771c1a3e40212f269210e913f74440c78ca440fa0bc7cbb14abc4510595412f0a1159a1e1cd0a79d4b0d71f9bd72a
   languageName: node
   linkType: hard
 
 "@trpc/server@npm:^11.0.0-rc.446":
-  version: 11.0.0-rc.498
-  resolution: "@trpc/server@npm:11.0.0-rc.498"
-  checksum: 10c0/307ffbb4f70d7aeb1ba16a85d100b9b679f77fcee333b811defe339d820be0ea6085c18fbbf9feae259851ad99c0bc16f88f05723e33b1adf4fb679f923bd585
+  version: 11.19.0
+  resolution: "@trpc/server@npm:11.19.0"
+  peerDependencies:
+    typescript: ">=5.7.2"
+  bin:
+    intent: bin/intent.js
+  checksum: 10c0/5f38ffdbbc308fb71bc1ea00bf58012c0c319ec2f94dc3bffc1c9f4f9811e15b87c30405c43e9c55d05a3c8d9de1de104323cea3029ada3b4da7150ba2815273
   languageName: node
   linkType: hard
 
