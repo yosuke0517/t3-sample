@@ -1095,31 +1095,50 @@ __metadata:
   linkType: hard
 
 "@trpc/client@npm:^11.0.0-rc.446":
-  version: 11.0.0-rc.498
-  resolution: "@trpc/client@npm:11.0.0-rc.498"
+  version: 11.25.2
+  resolution: "@trpc/client@npm:11.25.2"
   peerDependencies:
-    "@trpc/server": 11.0.0-rc.498+5714423cc
-  checksum: 10c0/ba28f2487211b7455890f31ca8b0eb6bda9eb2e10be5da3d2a89e0dffb235e4fb7178bd1f852821fe8172c982a7e0dd3055acf579d80092631f2b124f2420286
+    "@trpc/server": 11.25.2
+    typescript: ">=5.7.2"
+  checksum: 10c0/3ea4e1572f4d1a476511d043ec55a9ceda1b4d3e81eab859d754a01752f29f1f4fb34f1d44b24c9554e080841ebcf60153497cfc826bfd85610818fa15232b6f
   languageName: node
   linkType: hard
 
 "@trpc/react-query@npm:^11.0.0-rc.446":
-  version: 11.0.0-rc.498
-  resolution: "@trpc/react-query@npm:11.0.0-rc.498"
+  version: 11.25.2
+  resolution: "@trpc/react-query@npm:11.25.2"
   peerDependencies:
-    "@tanstack/react-query": ^5.49.2
-    "@trpc/client": 11.0.0-rc.498+5714423cc
-    "@trpc/server": 11.0.0-rc.498+5714423cc
+    "@tanstack/react-query": ^5.80.3
+    "@trpc/client": 11.25.2
+    "@trpc/server": 11.25.2
     react: ">=18.2.0"
-    react-dom: ">=18.2.0"
-  checksum: 10c0/bbe8e428a005f31ce3fa23589e079a7a45f33dc5309507035c447db20f3935b4486dc68798628cee1cf464fc4a3c224438185dd55d2f525e312dcd6a1568f7fe
+    typescript: ">=5.7.2"
+  checksum: 10c0/88012e8a939c32f91d3caf4b742e36d0bbf4953e18ade71318767c441ec165bd34d1eaf3f4853ece98edb0e3c3c70e8d51c291a0c41f94738884fc2f89033f98
   languageName: node
   linkType: hard
 
 "@trpc/server@npm:^11.0.0-rc.446":
-  version: 11.0.0-rc.498
-  resolution: "@trpc/server@npm:11.0.0-rc.498"
-  checksum: 10c0/307ffbb4f70d7aeb1ba16a85d100b9b679f77fcee333b811defe339d820be0ea6085c18fbbf9feae259851ad99c0bc16f88f05723e33b1adf4fb679f923bd585
+  version: 11.25.2
+  resolution: "@trpc/server@npm:11.25.2"
+  peerDependencies:
+    "@types/aws-lambda": "*"
+    "@types/express": "*"
+    "@types/ws": "*"
+    fastify: "*"
+    next: "*"
+    typescript: ">=5.7.2"
+  peerDependenciesMeta:
+    "@types/aws-lambda":
+      optional: true
+    "@types/express":
+      optional: true
+    "@types/ws":
+      optional: true
+    fastify:
+      optional: true
+    next:
+      optional: true
+  checksum: 10c0/60fea59488779aae7474df1c4a6fa4c6e18e3faf6a8ede1ba98c306d404d2486db118bd0962a6fda18253f669bf4bac17fb220723fd064324fc3e3850a0d99cc
   languageName: node
   linkType: hard
 
